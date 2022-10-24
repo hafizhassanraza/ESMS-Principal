@@ -13,12 +13,12 @@
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:columnCount="2"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="80dp"
-        android:background="@drawable/bg_card">
+        android:background="@drawable/bg_card"
+        android:columnCount="2">
 
 
         <!--<androidx.cardview.widget.CardView
@@ -163,10 +163,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="8dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:layout_marginStart="16dp">
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -198,44 +198,65 @@
                     android:layout_gravity="center_vertical"
                     android:padding="15dp" />
 
-                <LinearLayout
-                    android:id="@+id/layoutPresent"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/textTotalStudents"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/pieChart"
-                    android:orientation="horizontal"
-                    android:paddingLeft="10dp">
+                    android:layout_marginVertical="2dp"
+                    android:layout_marginStart="10dp"
+                    android:text="Total Students : " />
+
+                <TextView
+                    android:id="@+id/tvTotalStudents"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/pieChart"
+                    android:layout_marginVertical="2dp"
+                    android:layout_toEndOf="@id/textTotalStudents"
+                    android:text="___" />
+
+                <LinearLayout
+                    android:id="@+id/layoutPresent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textTotalStudents"
+                    android:layout_marginVertical="1dp"
+                    android:layout_marginStart="10dp"
+                    android:orientation="horizontal">
 
 
                     <View
                         android:layout_width="15dp"
                         android:layout_height="15dp"
-                        android:layout_gravity="center_vertical"
                         android:background="@color/present" />
 
                     <TextView
+                        android:id="@+id/tvPresent"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="10dp"
                         android:text="Present" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/layoutAbsent"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_below="@+id/layoutPresent"
-                    android:paddingLeft="10dp">
+                    android:layout_marginVertical="1dp"
+                    android:layout_marginStart="10dp"
+                    android:orientation="horizontal">
 
                     <View
                         android:layout_width="15dp"
                         android:layout_height="15dp"
-                        android:layout_gravity="center_vertical"
                         android:background="@color/absent" />
 
                     <TextView
+                        android:id="@+id/tvAbsent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -245,33 +266,34 @@
 
                 <LinearLayout
                     android:id="@+id/layoutLeave"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_below="@id/layoutAbsent"
-                    android:paddingLeft="10dp">
+                    android:layout_marginStart="10dp"
+                    android:orientation="horizontal">
 
                     <View
                         android:layout_width="15dp"
                         android:layout_height="15dp"
-                        android:layout_gravity="center_vertical"
                         android:background="@color/leave" />
 
                     <TextView
+                        android:id="@+id/tvLeave"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginStart="10dp"
                         android:text="Leave" />
 
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/tvPercentage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="70%"
-                    android:textSize="16sp"
+                    android:layout_below="@id/layoutAbsent"
                     android:layout_alignParentEnd="true"
-                    android:layout_below="@id/layoutAbsent"/>
+                    android:text="__%"
+                    android:textSize="16sp" />
 
             </RelativeLayout>
 
@@ -281,8 +303,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1">
-
-
 
 
         </androidx.cardview.widget.CardView>
