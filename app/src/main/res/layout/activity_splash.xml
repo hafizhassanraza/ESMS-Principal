@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient_splash"
+    tools:context=".activities.SplashActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Principal Portal"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/logo_enfotrix"
+        android:layout_centerHorizontal="true"
+        android:text="Powered By"
+        android:textColor="@color/red"
+        android:textSize="12sp" />
+
+    <ImageView
+        android:id="@+id/logo_enfotrix"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="80dp"
+        android:src="@drawable/logo_enfotrix"
+        />
+
+
+</RelativeLayout>

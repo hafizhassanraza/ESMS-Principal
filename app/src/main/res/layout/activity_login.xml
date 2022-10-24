@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient_splash"
+    tools:context=".activities.LoginActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Principal Portal"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/login_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginHorizontal="20dp"
+        android:elevation="5dp"
+        app:cardCornerRadius="20dp"
+        app:cardMaxElevation="40dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:paddingBottom="10dp">
+
+            <TextView
+                android:id="@+id/log_in_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="Enter the following details"
+                android:textAllCaps="false"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/log_in_txt"
+                android:layout_marginStart="23dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:text="User Name" />
+
+            <EditText
+                android:id="@+id/et_userName"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_below="@+id/tv_email"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/bg_edit_text"
+                android:drawableStart="@drawable/ic_person"
+                android:drawablePadding="10dp"
+                android:drawableTint="#4D000000"
+                android:hint="Enter user name"
+                android:inputType="text"
+                android:paddingStart="12dp"
+                android:paddingEnd="8dp"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_userName"
+                android:layout_marginStart="23dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:text="Password" />
+
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_below="@+id/tv_password"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/bg_edit_text"
+                android:drawableStart="@drawable/ic_lock_open"
+                android:drawablePadding="10dp"
+                android:drawableTint="#4D000000"
+                android:ems="10"
+                android:hint="Enter password"
+                android:inputType="textPassword"
+                android:paddingStart="12dp"
+                android:paddingEnd="8dp"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/et_password"
+                android:animateLayoutChanges="true">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_log_in"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="20dp"
+                    android:background="@drawable/bg_button"
+                    android:text="Log In"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:visibility="invisible" />
+
+
+            </FrameLayout>
+
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/logo_enfotrix"
+        android:layout_centerHorizontal="true"
+        android:text="Powered By"
+        android:textColor="@color/red"
+        android:textSize="12sp" />
+
+    <ImageView
+        android:id="@+id/logo_enfotrix"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+        android:src="@drawable/logo_enfotrix"
+        />
+
+</RelativeLayout>

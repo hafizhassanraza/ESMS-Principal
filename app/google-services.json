@@ -1,0 +1,126 @@
+{
+  "project_info": {
+    "project_number": "423890786669",
+    "project_id": "cgs-sargodha",
+    "storage_bucket": "cgs-sargodha.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:423890786669:android:fd3f5c94888b88de1c2264",
+        "android_client_info": {
+          "package_name": "com.enfotrix.cgsc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "423890786669-9fng8j4b2v1pqlp4k2hokot36rteunqs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQ2WY_nomFIsGRHmJdJxnn5FGAbaAvXRw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "423890786669-9fng8j4b2v1pqlp4k2hokot36rteunqs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:423890786669:android:2fb4519bc7ad204b1c2264",
+        "android_client_info": {
+          "package_name": "com.enfotrix.cgscstudent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "423890786669-9fng8j4b2v1pqlp4k2hokot36rteunqs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQ2WY_nomFIsGRHmJdJxnn5FGAbaAvXRw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "423890786669-9fng8j4b2v1pqlp4k2hokot36rteunqs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:423890786669:android:adc71a6e7ee42a901c2264",
+        "android_client_info": {
+          "package_name": "com.enfotrix.cgscteacher"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "423890786669-9fng8j4b2v1pqlp4k2hokot36rteunqs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQ2WY_nomFIsGRHmJdJxnn5FGAbaAvXRw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "423890786669-9fng8j4b2v1pqlp4k2hokot36rteunqs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:423890786669:android:71456e85be32272c1c2264",
+        "android_client_info": {
+          "package_name": "com.enfotrix.principalportal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "423890786669-9fng8j4b2v1pqlp4k2hokot36rteunqs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQ2WY_nomFIsGRHmJdJxnn5FGAbaAvXRw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "423890786669-9fng8j4b2v1pqlp4k2hokot36rteunqs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
