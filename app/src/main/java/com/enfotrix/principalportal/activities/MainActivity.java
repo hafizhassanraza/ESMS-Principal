@@ -29,8 +29,6 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     private PreferenceManager preferenceManager;
-    private FirebaseFirestore firebaseFirestore;
-    private Integer present = 0, absent = 0, leave = 0, totalStudents = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,75 +38,16 @@ public class MainActivity extends AppCompatActivity {
 
         init();
         setPreferredInfo();
-        getAttendanceInfo();
         setListeners();
-
     }
 
-    private void getAttendanceInfo() {
-        firebaseFirestore.collection(Constants.KEY_COLLECTION_ATTENDANCE)
-                .whereEqualTo(Constants.KEY_DATE, getCurrentDate())
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful() && task.getResult() != null
-                                && task.getResult().getDocuments().size() > 0) {
-
-                            totalStudents = task.getResult().getDocuments().size();
-
-                            for (DocumentSnapshot documentSnapshot : task.getResult().getDocuments()) {
-                                String status = documentSnapshot.getString(Constants.KEY_STATUS);
-                                if (status.equals(Constants.KEY_PRESENT)) {
-                                    present++;
-                                } else if (status.equals(Constants.KEY_ABSENT)) {
-                                    absent++;
-                                } else {
-                                    leave++;
-                                }
-                            }
-                            setAttendancePieChart(present, absent, leave, totalStudents);
-                        }
-                    }
-                });
-    }
 
     private void init() {
         preferenceManager = new PreferenceManager(this);
-        firebaseFirestore = FirebaseFirestore.getInstance();
     }
 
     private void setPreferredInfo() {
         binding.actionBarLayout.tvActionBar.setText(preferenceManager.getString(Constants.KEY_NAME).toUpperCase(Locale.ROOT));
-    }
-
-    private void setAttendancePieChart(Integer present, Integer absent, Integer leave, Integer totalStudents) {
-
-        binding.pieChart.addPieSlice(
-                new PieModel(
-                        "Present",
-                        present,
-                        Color.parseColor("#76DD7B")
-                ));
-        binding.pieChart.addPieSlice(
-                new PieModel(
-                        "Absent",
-                        absent,
-                        Color.parseColor("#EB3F62")));
-        binding.pieChart.addPieSlice(
-                new PieModel(
-                        "Leave",
-                        leave,
-                        Color.parseColor("#61B8E0")
-                ));
-        binding.pieChart.startAnimation();
-
-        Integer percentage = present * 100 / totalStudents;
-        binding.tvPercentage.setText(String.valueOf(percentage) + "%");
-        binding.tvTotalStudents.setText(String.valueOf(totalStudents));
-        binding.tvPresent.setText(String.valueOf(present) + " Present");
-        binding.tvAbsent.setText(String.valueOf(absent) + " Absent");
-        binding.tvLeave.setText(String.valueOf(leave) + " Leave");
     }
 
     private void setListeners() {
@@ -119,16 +58,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         binding.cardViewAttendance.setOnClickListener(view -> {
-            startActivity(new Intent(MainActivity.this,AttendanceActivity.class));
+            startActivity(new Intent(MainActivity.this, AttendanceActivity.class));
         });
-    }
 
-    private String getCurrentDate() {
-        Date c = Calendar.getInstance().getTime();
-        System.out.println("Current time => " + c);
-
-        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
-        String formattedDate = df.format(c);
-        return formattedDate;
+        binding.cardViewExamResults.setOnClickListener(
+                view -> startActivity(new Intent(MainActivity.this, ExamResultActivity.class))
+        );
     }
 }
