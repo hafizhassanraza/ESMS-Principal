@@ -65,4 +65,5 @@ public class MainActivity extends AppCompatActivity {
                 view -> startActivity(new Intent(MainActivity.this, ExamResultActivity.class))
         );
     }
+
 }
