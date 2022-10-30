@@ -1,5 +1,6 @@
 package com.enfotrix.principalportal.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -16,10 +17,14 @@ import com.enfotrix.principalportal.models.Student;
 
 import java.util.ArrayList;
 
-public class AttendanceDetailAdapter extends RecyclerView.Adapter<AttendanceDetailAdapter.ViewHolder> {
+public class AttendanceDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private ArrayList<Student> studentsList;
     private Context context;
+
+    private final int TYPE_HEADER = 0;
+    private final int TYPE_ITEMS = 1;
+
 
     public AttendanceDetailAdapter(ArrayList<Student> studentsList, Context context) {
         this.studentsList = studentsList;
@@ -28,20 +33,28 @@ public class AttendanceDetailAdapter extends RecyclerView.Adapter<AttendanceDeta
 
     @NonNull
     @Override
-    public AttendanceDetailAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.attendance_list_item, parent, false);
-        return new ViewHolder(view);
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        if(viewType == TYPE_HEADER){
+            View view = LayoutInflater.from(context).inflate(R.layout.attendance_header_item_layout, parent, false);
+            return new HeaderViewHolder(view);
+        }else {
+            View view = LayoutInflater.from(context).inflate(R.layout.attendance_list_item, parent, false);
+            return new ItemViewHolder(view);
+        }
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AttendanceDetailAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
-        holder.name.setText(studentsList.get(position).getStudentName());
-        holder.fathersName.setText(studentsList.get(position).getFatherName());
-        holder.className.setText(studentsList.get(position).getClassName());
-        holder.sectionName.setText(studentsList.get(position).getSectionName());
-        holder.status.setText(studentsList.get(position).getStatus());
-        holder.contactNumber.setText(studentsList.get(position).getFatherPhoneNumber());
+        if(holder instanceof ItemViewHolder){
+            ItemViewHolder itemViewHolder = (ItemViewHolder) holder;
+            itemViewHolder.name.setText(studentsList.get(position).getStudentName());
+            itemViewHolder.fathersName.setText(studentsList.get(position).getFatherName());
+            itemViewHolder.className.setText(studentsList.get(position).getClassName());
+            itemViewHolder.sectionName.setText(studentsList.get(position).getSectionName());
+            itemViewHolder.status.setText(studentsList.get(position).getStatus());
+            itemViewHolder.contactNumber.setText(studentsList.get(position).getFatherPhoneNumber());
+        }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,11 +71,19 @@ public class AttendanceDetailAdapter extends RecyclerView.Adapter<AttendanceDeta
         return studentsList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    @Override
+    public int getItemViewType(int position) {
+        if (position == 0) {
+            return TYPE_HEADER;
+        }
+        return TYPE_ITEMS;
+    }
+
+    public class ItemViewHolder extends RecyclerView.ViewHolder {
 
         TextView name, fathersName, className, sectionName, status, contactNumber;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
 
             name = itemView.findViewById(R.id.tvName);
@@ -72,6 +93,13 @@ public class AttendanceDetailAdapter extends RecyclerView.Adapter<AttendanceDeta
             status = itemView.findViewById(R.id.tvStatus);
             contactNumber = itemView.findViewById(R.id.tvContact);
 
+        }
+    }
+
+    public class HeaderViewHolder extends RecyclerView.ViewHolder {
+
+        public HeaderViewHolder(@NonNull View itemView) {
+            super(itemView);
         }
     }
 }

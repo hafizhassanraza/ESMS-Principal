@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:scrollbars="horizontal"
-    android:background="?attr/selectableItemBackground">
+    android:scrollbars="horizontal">
 
     <LinearLayout
         android:id="@+id/layoutDetails"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingVertical="2.5dp">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/tvName"
@@ -21,7 +18,9 @@
             android:gravity="center_vertical"
             android:maxLines="1"
             android:padding="8dp"
-            tools:text="Name" />
+            android:text="Name"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvFatherName"
@@ -31,7 +30,9 @@
             android:gravity="center_vertical"
             android:maxLines="1"
             android:padding="8dp"
-            tools:text="Father Name" />
+            android:text="Father Name"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvClass"
@@ -41,7 +42,9 @@
             android:gravity="center_vertical"
             android:maxLines="1"
             android:padding="8dp"
-            tools:text="Class" />
+            android:text="Class"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvSection"
@@ -51,7 +54,9 @@
             android:gravity="center_vertical"
             android:maxLines="1"
             android:padding="8dp"
-            tools:text="Section" />
+            android:text="Section"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvStatus"
@@ -61,7 +66,9 @@
             android:gravity="center_vertical"
             android:maxLines="1"
             android:padding="8dp"
-            tools:text="Status" />
+            android:text="Status"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvContact"
@@ -71,7 +78,9 @@
             android:gravity="center_vertical"
             android:maxLines="1"
             android:padding="8dp"
-            tools:text="Contact" />
+            android:text="Contact"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -79,6 +88,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@id/layoutDetails"
+        android:layout_marginTop="2dp"
         android:background="@color/black" />
 
 

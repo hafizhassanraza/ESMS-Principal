@@ -23,6 +23,7 @@ public class Constants {
     public static final String KEY_CURRENT_CLASS = "CurrentClass";
     public static final String KEY_CURRENT_SECTION = "CurrentSection";
     public static final String KEY_SECTION_NAME = "SectionName";
+    public static final String KEY_SECTION_ID = "SectionID";
 
 
 }

@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.OverAllAttendanceActivity">
+
+    <LinearLayout
+        android:id="@+id/layoutActionBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/purple_500"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/ic_back"
+            app:tint="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="16dp"
+            android:text="Attendance"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:visibility="gone"
+        android:indeterminate="true"
+        android:layout_below="@id/layoutActionBar"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/layoutActionBar">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/layoutDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="Date"
+                    android:textSize="24sp"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:id="@+id/tvDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="12dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_edit_text"
+                    android:drawableEnd="@drawable/ic_calendar"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="8dp"
+                    android:text="27-10-2022"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:paddingVertical="2.5dp"
+                android:layout_below="@id/layoutDate">
+
+                <TextView
+                    android:id="@+id/tvClass"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    android:maxLines="1"
+                    android:textStyle="bold"
+                    android:padding="8dp"
+                    android:text="Class" />
+
+                <TextView
+                    android:id="@+id/tvSection"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:maxLines="1"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    android:padding="8dp"
+                    android:text="Section" />
+
+                <TextView
+                    android:id="@+id/tvTotal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:maxLines="1"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    android:padding="8dp"
+                    android:text="Total" />
+
+                <TextView
+                    android:id="@+id/tvPresent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:maxLines="1"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    android:padding="8dp"
+                    android:text="Present" />
+
+                <TextView
+                    android:id="@+id/tvAbsent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:maxLines="1"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    android:padding="8dp"
+                    android:text="Absent" />
+
+                <TextView
+                    android:id="@+id/tvLeave"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:maxLines="1"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    android:padding="8dp"
+                    android:text="Leave" />
+
+                <TextView
+                    android:id="@+id/tvPercent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    android:padding="8dp"
+                    android:text="Percent" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/viewDetails"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/layoutDetails"
+                android:background="@color/black" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvAttendance"
+                android:layout_below="@id/viewDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="2dp"
+                android:overScrollMode="never"
+                tools:listitem="@layout/overall_attendance_list_item" />
+
+            <LinearLayout
+                android:id="@+id/layoutTotalStudentsDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rvAttendance"
+                android:paddingVertical="2.5dp">
+
+                <TextView
+                    android:id="@+id/textStudentsDetail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:padding="8dp"
+                    android:text="Students Detail" />
+
+                <TextView
+                    android:id="@+id/tvTotalDetail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:maxLines="1"
+                    android:textColor="@color/black"
+                    android:padding="8dp"
+                    android:text="Total" />
+
+                <TextView
+                    android:id="@+id/tvPresentDetail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:maxLines="1"
+                    android:textColor="@color/black"
+                    android:padding="8dp"
+                    android:text="Present" />
+
+                <TextView
+                    android:id="@+id/tvAbsentDetail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:maxLines="1"
+                    android:textColor="@color/black"
+                    android:padding="8dp"
+                    android:text="Absent" />
+
+                <TextView
+                    android:id="@+id/tvLeaveDetail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:maxLines="1"
+                    android:textColor="@color/black"
+                    android:padding="8dp"
+                    android:text="Leave" />
+
+                <TextView
+                    android:id="@+id/tvPercentDetail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:maxLines="1"
+                    android:textColor="@color/black"
+                    android:padding="8dp"
+                    android:text="Percent" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/layoutTotalStudentsDetail"
+                android:background="@color/black" />
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+
+
+</RelativeLayout>

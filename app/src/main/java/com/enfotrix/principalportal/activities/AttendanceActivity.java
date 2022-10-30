@@ -1,14 +1,13 @@
 package com.enfotrix.principalportal.activities;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,10 +15,12 @@ import android.widget.DatePicker;
 import android.widget.Toast;
 
 import com.enfotrix.principalportal.databinding.ActivityAttendanceBinding;
+import com.enfotrix.principalportal.models.OverAllAttendance;
 import com.enfotrix.principalportal.models.Student;
 import com.enfotrix.principalportal.utilities.Constants;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -31,16 +32,15 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
 public class AttendanceActivity extends AppCompatActivity {
-
+    private ArrayList<OverAllAttendance> overAllAttendances;
     private ActivityAttendanceBinding binding;
     private FirebaseFirestore firebaseFirestore;
-    private int present, absent, leave, totalStudents;
     final Calendar myCalendar = Calendar.getInstance();
+    int overAllPresent,overAllAbsent,overAllLeave,overAllTotal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +56,7 @@ public class AttendanceActivity extends AppCompatActivity {
     }
 
     private void init() {
+        binding.tvCheckDetails.setEnabled(false);
         firebaseFirestore = FirebaseFirestore.getInstance();
         setClassSpinner();
         setSectionSpinner("");
@@ -66,6 +67,9 @@ public class AttendanceActivity extends AppCompatActivity {
     }
 
     private void setListeners() {
+
+        binding.btnBack.setOnClickListener(view -> onBackPressed());
+
         DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int day) {
@@ -92,6 +96,81 @@ public class AttendanceActivity extends AppCompatActivity {
                 }
             }
         });
+
+        binding.tvCheckDetails.setOnClickListener(view -> {
+            loading(true);
+            getClassesWithSections();
+        });
+    }
+
+    private void getClassesWithSections() {
+        overAllAttendances = new ArrayList<>();
+        firebaseFirestore.collectionGroup(Constants.KEY_COLLECTION_SECTIONS)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        for (DocumentSnapshot documentSnapshot : task.getResult()) {
+                            if (documentSnapshot.getString("ClassName") == null)
+                                continue;
+                            overAllAttendances.add(new OverAllAttendance(documentSnapshot.getString("ClassName"),
+                                    documentSnapshot.getString("SectionName"),
+                                    documentSnapshot.getString("DocID"),
+                                    "",
+                                    "",
+                                    "",
+                                    "",
+                                    ""));
+                        }
+
+                        addOverAllAttendanceStatus(overAllAttendances);
+                    }
+                });
+    }
+
+    private void addOverAllAttendanceStatus(ArrayList<OverAllAttendance> overAllAttendances) {
+
+        firebaseFirestore.collection(Constants.KEY_COLLECTION_ATTENDANCE)
+                .whereEqualTo(Constants.KEY_DATE, binding.tvDate.getText().toString())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                        for (int i = 0; i < overAllAttendances.size(); i++) {
+                            overAllPresent = 0; overAllAbsent = 0; overAllLeave = 0; overAllTotal = 0;
+                            for (DocumentSnapshot documentSnapshot : task.getResult()) {
+                                if (overAllAttendances.get(i).getSectionId().equals(documentSnapshot.getString(Constants.KEY_SECTION_ID))) {
+                                     overAllTotal++;
+                                    if (documentSnapshot.getString(Constants.KEY_STATUS).equals(Constants.KEY_PRESENT)) {
+                                        overAllPresent++;
+                                    } else if (documentSnapshot.getString(Constants.KEY_STATUS).equals(Constants.KEY_ABSENT)) {
+                                        overAllAbsent++;
+                                    } else {
+                                        overAllLeave++;
+                                    }
+                                }
+                            }
+
+                            //int percent = overAllPresent * 100 / overAllTotal;
+                            overAllAttendances.get(i).setTotal(String.valueOf(overAllTotal));
+                            overAllAttendances.get(i).setPresent(String.valueOf(overAllPresent));
+                            overAllAttendances.get(i).setAbsent(String.valueOf(overAllAbsent));
+                            overAllAttendances.get(i).setLeave(String.valueOf(overAllLeave));
+                            //overAllAttendances.get(i).setPercent(String.valueOf(percent));
+
+                            if((i+1)==overAllAttendances.size()){
+                                loading(false);
+                                Intent intent = new Intent(AttendanceActivity.this, OverAllAttendanceActivity.class);
+                                intent.putParcelableArrayListExtra("overAllAttendanceList", overAllAttendances);
+                                intent.putExtra("selectedDate",binding.tvDate.getText().toString());
+                                startActivity(intent);
+                            }
+                        }
+
+                    }
+                });
+
     }
 
     private void getSectionId(String className, String sectionName) {
@@ -136,7 +215,7 @@ public class AttendanceActivity extends AppCompatActivity {
                         if (task.isSuccessful() && task.getResult() != null
                                 && task.getResult().getDocuments().size() > 0) {
                             for (DocumentSnapshot documentSnapshot : task.getResult()) {
-                                studentList.add(new Student(documentSnapshot.getString("FirstName"),
+                                studentList.add(new Student((documentSnapshot.getString("FirstName") + " " + documentSnapshot.getString("LastName")).trim(),
                                         documentSnapshot.getString("FatherName"),
                                         className,
                                         sectionName,
@@ -182,7 +261,6 @@ public class AttendanceActivity extends AppCompatActivity {
                             }
                         }
                         if (studentList.size() > 0) {
-                            Toast.makeText(AttendanceActivity.this, String.valueOf(studentList.size()), Toast.LENGTH_SHORT).show();
                             loading(false);
                             Intent intent = new Intent(AttendanceActivity.this, AttendanceDetailActivity.class);
                             intent.putExtra("selectedDate", binding.tvDate.getText().toString());
@@ -199,10 +277,6 @@ public class AttendanceActivity extends AppCompatActivity {
 
     private void getAttendanceInfo() {
         loading(true);
-        present = 0;
-        absent = 0;
-        leave = 0;
-        totalStudents = 0;
         firebaseFirestore.collection(Constants.KEY_COLLECTION_ATTENDANCE)
                 .whereEqualTo(Constants.KEY_DATE, binding.tvDate.getText().toString())
                 .get()
@@ -211,11 +285,12 @@ public class AttendanceActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful() && task.getResult() != null
                                 && task.getResult().getDocuments().size() > 0) {
-
+                            int present = 0, absent = 0, leave = 0, totalStudents = 0;
                             totalStudents = task.getResult().getDocuments().size();
 
                             for (DocumentSnapshot documentSnapshot : task.getResult().getDocuments()) {
                                 String status = documentSnapshot.getString(Constants.KEY_STATUS);
+                                assert status != null;
                                 if (status.equals(Constants.KEY_PRESENT)) {
                                     present++;
                                 } else if (status.equals(Constants.KEY_ABSENT)) {
@@ -226,6 +301,7 @@ public class AttendanceActivity extends AppCompatActivity {
                             }
                             loading(false);
                             //binding.btnDetailedAttendance.setEnabled(true);
+                            binding.tvCheckDetails.setEnabled(true);
                             setAttendancePieChart(present, absent, leave, totalStudents);
                         } else {
                             loading(false);
@@ -262,6 +338,7 @@ public class AttendanceActivity extends AppCompatActivity {
                     setSectionSpinner("");
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
@@ -312,11 +389,11 @@ public class AttendanceActivity extends AppCompatActivity {
         binding.pieChart.startAnimation();
 
         int percentage = present * 100 / totalStudents;
-        binding.tvPercentage.setText((percentage) + "%");
+        binding.tvPercentage.setText(String.format(Locale.getDefault(), "%d%%", percentage));
         binding.tvTotalStudents.setText(String.valueOf(totalStudents));
-        binding.tvPresent.setText((present) + " Present");
-        binding.tvAbsent.setText((absent) + " Absent");
-        binding.tvLeave.setText((leave) + " Leave");
+        binding.tvPresent.setText(String.format(Locale.getDefault(), "%d Present", present));
+        binding.tvAbsent.setText(String.format(Locale.getDefault(), "%d Absent", absent));
+        binding.tvLeave.setText(String.format(Locale.getDefault(), "%d Leave", leave));
     }
 
     private String getCurrentDate() {

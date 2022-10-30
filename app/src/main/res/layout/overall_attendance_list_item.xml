@@ -14,64 +14,81 @@
         android:paddingVertical="2.5dp">
 
         <TextView
-            android:id="@+id/tvName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:gravity="center_vertical"
-            android:maxLines="1"
-            android:padding="8dp"
-            tools:text="Name" />
-
-        <TextView
-            android:id="@+id/tvFatherName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:gravity="center_vertical"
-            android:maxLines="1"
-            android:padding="8dp"
-            tools:text="Father Name" />
-
-        <TextView
             android:id="@+id/tvClass"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:gravity="center_vertical"
+            android:layout_weight="1"
+            android:gravity="center"
             android:maxLines="1"
             android:padding="8dp"
-            tools:text="Class" />
+            tools:text="Class"
+            android:textSize="12sp"/>
 
         <TextView
             android:id="@+id/tvSection"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:gravity="center_vertical"
+            android:layout_weight="1"
+            android:gravity="center"
             android:maxLines="1"
+            android:textSize="12sp"
             android:padding="8dp"
             tools:text="Section" />
 
         <TextView
-            android:id="@+id/tvStatus"
+            android:id="@+id/tvTotal"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2.5"
-            android:gravity="center_vertical"
+            android:layout_weight="1"
+            android:gravity="center"
             android:maxLines="1"
+            android:textSize="12sp"
             android:padding="8dp"
-            tools:text="Status" />
+            tools:text="Total" />
 
         <TextView
-            android:id="@+id/tvContact"
+            android:id="@+id/tvPresent"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:gravity="center_vertical"
+            android:layout_weight="1"
+            android:gravity="center"
             android:maxLines="1"
+            android:textSize="12sp"
             android:padding="8dp"
-            tools:text="Contact" />
+            tools:text="Present" />
+
+        <TextView
+            android:id="@+id/tvAbsent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:maxLines="1"
+            android:textSize="12sp"
+            android:padding="8dp"
+            tools:text="Absent" />
+
+        <TextView
+            android:id="@+id/tvLeave"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:maxLines="1"
+            android:textSize="12sp"
+            android:padding="8dp"
+            tools:text="Leave" />
+
+        <TextView
+            android:id="@+id/tvPercent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:maxLines="1"
+            android:textSize="12sp"
+            android:padding="8dp"
+            tools:text="Percent" />
 
     </LinearLayout>
 

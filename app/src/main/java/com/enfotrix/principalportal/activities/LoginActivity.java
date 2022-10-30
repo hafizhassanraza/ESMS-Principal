@@ -54,8 +54,8 @@ public class LoginActivity extends AppCompatActivity {
     private void loginUser() {
         loading(true);
         firebaseFirestore.collection(Constants.KEY_COLLECTION_ADMIN)
-                .whereEqualTo(Constants.KEY_NAME,binding.etUserName.getText().toString())
-                .whereEqualTo(Constants.KEY_PASSWORD,binding.etPassword.getText().toString())
+                .whereEqualTo(Constants.KEY_NAME,binding.etUserName.getText().toString().trim())
+                .whereEqualTo(Constants.KEY_PASSWORD,binding.etPassword.getText().toString().trim())
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override

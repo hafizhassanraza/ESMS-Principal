@@ -1,12 +1,12 @@
 package com.enfotrix.principalportal.activities;
 
+import android.annotation.SuppressLint;
+import android.os.Bundle;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
 
 import com.enfotrix.principalportal.adapters.AttendanceDetailAdapter;
 import com.enfotrix.principalportal.databinding.ActivityAttendanceDetailBinding;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class AttendanceDetailActivity extends AppCompatActivity {
     private ActivityAttendanceDetailBinding binding;
-    private ArrayList<Student> studentList = new ArrayList<Student>();
+    private ArrayList<Student> studentList = new ArrayList<>();
     private AttendanceDetailAdapter attendanceDetailAdapter;
     private String selectedDate;
     @Override
@@ -26,9 +26,21 @@ public class AttendanceDetailActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         init();
+        setListeners();
         setPreferredInfo();
     }
 
+    private void init(){
+        selectedDate = getIntent().getStringExtra("selectedDate");
+        studentList = getIntent().getParcelableArrayListExtra("studentList");
+
+    }
+
+    private void setListeners() {
+        binding.btnBack.setOnClickListener(view -> onBackPressed());
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
     private void setPreferredInfo() {
         binding.tvDate.setText(selectedDate);
 
@@ -37,12 +49,5 @@ public class AttendanceDetailActivity extends AppCompatActivity {
         binding.rvAttendance.setLayoutManager(new LinearLayoutManager(this,
                 RecyclerView.VERTICAL,false));
         attendanceDetailAdapter.notifyDataSetChanged();
-    }
-
-    private void init(){
-        binding.layoutAttendanceDetails.setVisibility(View.VISIBLE);
-        selectedDate = getIntent().getStringExtra("selectedDate");
-        studentList = getIntent().getParcelableArrayListExtra("studentList");
-
     }
 }
