@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:scrollbars="horizontal"
+    android:background="?attr/selectableItemBackground">
+
+    <LinearLayout
+        android:id="@+id/layoutDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="2.5dp">
+
+        <TextView
+            android:id="@+id/tvClass"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:maxLines="1"
+            android:padding="8dp"
+            android:text="Class"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:id="@+id/tvSection"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:maxLines="1"
+            android:textSize="12sp"
+            android:padding="8dp"
+            android:text="Section" />
+
+        <TextView
+            android:id="@+id/tvTotal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:maxLines="1"
+            android:textSize="12sp"
+            android:padding="8dp"
+            android:text="Total" />
+
+        <TextView
+            android:id="@+id/tvPass"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:maxLines="1"
+            android:textSize="12sp"
+            android:padding="8dp"
+            android:text="Pass" />
+
+        <TextView
+            android:id="@+id/tvFail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:maxLines="1"
+            android:textSize="12sp"
+            android:padding="8dp"
+            android:text="Fail" />
+
+        <TextView
+            android:id="@+id/tvPercent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:maxLines="1"
+            android:textSize="12sp"
+            android:padding="8dp"
+            android:text="Percent" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/layoutDetails"
+        android:background="@color/black" />
+
+</RelativeLayout>

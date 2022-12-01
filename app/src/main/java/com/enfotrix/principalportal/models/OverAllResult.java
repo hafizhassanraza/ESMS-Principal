@@ -1,9 +1,9 @@
 package com.enfotrix.principalportal.models;
 
-public class OverAllResults {
+public class OverAllResult {
     private String className, sectionName, sectionID, totalStudents, passStudents, failStudents, percentage;
 
-    public OverAllResults(String className, String sectionName, String sectionID, String totalStudents, String passStudents, String failStudents, String percentage) {
+    public OverAllResult(String className, String sectionName, String sectionID, String totalStudents, String passStudents, String failStudents, String percentage) {
         this.className = className;
         this.sectionName = sectionName;
         this.sectionID = sectionID;
