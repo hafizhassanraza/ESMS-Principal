@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/_5sdp"
+        app:cardElevation="@dimen/_16sdp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <RelativeLayout
+                android:id="@+id/lout_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:paddingHorizontal="@dimen/_10sdp">
+
+                <TextView
+                    android:id="@+id/txt_transection_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginVertical="7dp"
+                    android:text="12/12/2020"
+                    android:textColor="@color/black"
+
+                    ></TextView>
+
+
+                <View
+                    android:id="@+id/left_LOC"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_centerVertical="true"
+
+
+                    android:layout_toLeftOf="@+id/txt_transection_date"
+                    android:background="@color/light_gray"></View>
+
+
+                <View
+                    android:id="@+id/left_LOC1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/txt_transection_date"
+                    android:background="@color/light_gray"></View>
+            </RelativeLayout>
+
+
+            <TextView
+                android:id="@+id/header1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lout_header"
+                android:layout_alignParentLeft="true"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:text="Amount"
+                android:textColor="@color/black"></TextView>
+
+
+            <TextView
+                android:id="@+id/txt_detail_feeRecevied"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lout_header"
+                android:layout_marginVertical="10dp"
+                android:layout_toRightOf="@id/header1"
+                android:text="@string/details"
+                android:textSize="@dimen/_10sdp"></TextView>
+
+            <TextView
+                android:id="@+id/txt_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lout_header"
+                android:layout_alignParentRight="true"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="10dp"
+                android:textColor="@color/black"
+                android:text="88889/- PKR"></TextView>
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

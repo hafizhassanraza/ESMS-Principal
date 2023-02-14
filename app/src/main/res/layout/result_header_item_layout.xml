@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:scrollbars="horizontal"
+    android:background="?attr/selectableItemBackground">
+
+    <LinearLayout
+        android:id="@+id/layoutDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="2.5dp">
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:padding="8dp"
+            tools:text="Name" />
+
+        <TextView
+            android:id="@+id/tvFatherName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:padding="8dp"
+            tools:text="Father Name" />
+
+        <TextView
+            android:id="@+id/tvClass"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:padding="8dp"
+            tools:text="Class" />
+
+        <TextView
+            android:id="@+id/tvSection"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:padding="8dp"
+            tools:text="Section" />
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.5"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:padding="8dp"
+            tools:text="Status" />
+
+        <TextView
+            android:id="@+id/tvPhysics"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:padding="8dp"
+            tools:text="Contact" />
+
+        <TextView
+            android:id="@+id/tvPakStudy"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:padding="8dp"
+            tools:text="Contact" />
+
+        <TextView
+            android:id="@+id/tvUrdu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:padding="8dp"
+            tools:text="Contact" />
+
+        <TextView
+            android:id="@+id/tvIslamiyat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:padding="8dp"
+            tools:text="Contact" />
+        <TextView
+            android:id="@+id/tvMath"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:padding="8dp"
+            tools:text="Contact" />
+        <TextView
+            android:id="@+id/tvBiology"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:padding="8dp"
+            tools:text="Contact" />
+        <TextView
+            android:id="@+id/tvScienceG"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:padding="8dp"
+            tools:text="Contact" />
+        <TextView
+            android:id="@+id/tvComputer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:padding="8dp"
+            tools:text="Contact" />
+        <TextView
+            android:id="@+id/tvEnglish"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:padding="8dp"
+            tools:text="Contact" />
+        <TextView
+            android:id="@+id/tvChemistry"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:padding="8dp"
+            tools:text="Contact" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/layoutDetails"
+        android:background="@color/black" />
+
+
+</RelativeLayout>

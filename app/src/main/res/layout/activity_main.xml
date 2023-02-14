@@ -1,87 +1,411 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.MainActivity">
 
-    <include
-        android:id="@+id/action_bar_layout"
-        layout="@layout/action_bar_layout" />
-
-    <GridLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/_60sdp"
-        android:background="@drawable/bg_card"
-        android:columnCount="2">
+        android:layout_height="wrap_content">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardViewAttendance"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_marginStart="@dimen/_16sdp"
-            android:layout_marginTop="@dimen/_16sdp"
-            android:layout_marginEnd="@dimen/_8sdp"
-            app:cardCornerRadius="@dimen/_6sdp"
-            app:cardElevation="@dimen/_4sdp">
+        <include
+            android:id="@+id/action_bar_layout"
+            layout="@layout/action_bar_layout" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_60sdp"
+            android:background="@drawable/bg_card"
+            android:orientation="vertical">
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_notice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_8sdp">
+                android:layout_below="@+id/ll_cards"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp">
 
-                <TextView
-                    android:id="@+id/textAttendance"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Attendance"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_15ssp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_160sdp"
+                    android:background="@drawable/black_board"
+                    android:orientation="vertical"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp">
 
-        </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:id="@+id/txt_notice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginBottom="3dp"
+                        android:gravity="center_horizontal"
+                        android:text="Notice Board"
+                        android:textColor="#DCFFFFFF"
+                        android:textStyle="bold" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardViewExamResults"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_marginStart="@dimen/_8sdp"
-            android:layout_marginTop="@dimen/_16sdp"
-            android:layout_marginEnd="@dimen/_16sdp"
-            app:cardCornerRadius="@dimen/_6sdp"
-            app:cardElevation="@dimen/_4sdp">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@drawable/shape_noticeboard" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvAnnouncements"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="8dp"
+                            android:layout_marginTop="5dp"
+                            tools:listitem="@layout/approved_announcement_layout" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_slider"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_below="@+id/card_notice"
+                android:layout_margin="16dp"
+                android:elevation="5dp"
+                app:cardCornerRadius="10dp">
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewpager_imageslider"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <RelativeLayout
+                    android:id="@+id/RlayGallery"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="5dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_centerVertical="true"
+                        android:background="#2ED571"
+                        android:src="@drawable/sliderleft" />
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:background="#2ED571"
+                        android:src="@drawable/sliderright" />
+
+
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+            <GridLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_8sdp">
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:background="@drawable/bg_card"
+                android:columnCount="2"
+                android:paddingBottom="@dimen/_10sdp">
 
-                <TextView
-                    android:id="@+id/textExamResults"
-                    android:layout_width="wrap_content"
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardViewAttendance"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_120sdp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginStart="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    app:cardCornerRadius="@dimen/_6sdp"
+                    app:cardElevation="@dimen/_4sdp">
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_8sdp">
+
+                        <TextView
+                            android:id="@+id/textAttendance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:text="Attendance"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
+
+                        <ImageView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_below="@+id/textAttendance"
+                            android:padding="@dimen/_10sdp"
+                            android:src="@drawable/date_sheet" />
+
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardViewExamResults"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_120sdp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginEnd="@dimen/_16sdp"
+                    app:cardCornerRadius="@dimen/_6sdp"
+                    app:cardElevation="@dimen/_4sdp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_8sdp">
+
+                        <TextView
+                            android:id="@+id/textExamResults"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:text="Exam Results"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:id="@+id/tv_grade"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:layout_below="@id/textExamResults"
+                            android:layout_centerInParent="true"
+                            android:layout_marginBottom="7dp"
+                            android:gravity="center"
+                            android:text="A+"
+                            android:textColor="@color/green"
+                            android:textSize="45sp"
+                            android:textStyle="bold" />
+
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardViewFee"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Exam Results"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_15ssp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_columnWeight="1"
+                    android:layout_marginStart="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    app:cardCornerRadius="@dimen/_6sdp"
+                    app:cardElevation="@dimen/_4sdp">
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_120sdp"
+                        android:padding="@dimen/_8sdp">
 
-        </androidx.cardview.widget.CardView>
+                        <TextView
+                            android:id="@+id/textStudentFee"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:text="Fee"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
 
-    </GridLayout>
+                        <ImageView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_below="@+id/textStudentFee"
+                            android:padding="@dimen/_10sdp"
+                            android:src="@drawable/receipt" />
 
 
-</RelativeLayout>
+                    </RelativeLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardViewAnnouncements"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginEnd="@dimen/_16sdp"
+                    app:cardCornerRadius="@dimen/_6sdp"
+                    app:cardElevation="@dimen/_4sdp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_120sdp"
+                        android:padding="@dimen/_8sdp">
+
+                        <TextView
+                            android:id="@+id/textAnnouncements"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:text="Announcements"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
+
+                        <ImageView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_below="@+id/textAnnouncements"
+                            android:padding="@dimen/_10sdp"
+                            android:src="@drawable/announcement" />
+
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardViewNotifications"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_120sdp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginStart="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    app:cardCornerRadius="@dimen/_6sdp"
+                    app:cardElevation="@dimen/_4sdp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_8sdp">
+
+                        <TextView
+                            android:id="@+id/textNotifications"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:text="Notifications"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
+
+
+                        <ImageView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_below="@+id/textNotifications"
+                            android:padding="@dimen/_10sdp"
+                            android:src="@drawable/notifications" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardDatesheet"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_120sdp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginEnd="@dimen/_16sdp"
+                    app:cardCornerRadius="@dimen/_6sdp"
+                    app:cardElevation="@dimen/_4sdp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="@dimen/_8sdp">
+
+                        <TextView
+                            android:id="@+id/textdatesheet"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:text="Datesheet"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
+
+                        <ImageView
+                            android:id="@+id/imgdatesheet"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_below="@+id/textdatesheet"
+                            android:layout_margin="10dp"
+                            android:src="@drawable/date_sheet" />
+
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/btnLogOut"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_120sdp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginStart="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    app:cardCornerRadius="@dimen/_6sdp"
+                    app:cardElevation="@dimen/_4sdp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="@dimen/_8sdp">
+
+                        <TextView
+                            android:id="@+id/textlogout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:text="Logout"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
+
+
+                        <ImageView
+                            android:id="@+id/iv_logout"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_below="@+id/textlogout"
+                            android:layout_gravity="right"
+                            android:padding="@dimen/_10sdp"
+                            android:src="@drawable/ic_exit" />
+
+
+                    </RelativeLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+            </GridLayout>
+
+
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>

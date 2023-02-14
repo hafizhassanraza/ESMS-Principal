@@ -6,7 +6,11 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 public class Student implements Parcelable{
-    String studentName,fatherName,className,sectionName,status,fatherPhoneNumber,studentId;
+    public static String studentName,fatherName,className,sectionName,status,fatherPhoneNumber,studentId;
+
+    public Student(){
+
+    }
 
     public Student(String studentName, String fatherName, String className, String sectionName, String status, String fatherPhoneNumber, String studentId) {
         this.studentName = studentName;

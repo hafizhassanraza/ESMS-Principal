@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cv_result"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/_5sdp"
+    android:layout_marginTop="@dimen/_5sdp"
+    android:orientation="vertical"
+    app:cardCornerRadius="@dimen/_10sdp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_8sdp"
+        android:layout_marginVertical="@dimen/_8sdp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:paddingLeft="@dimen/_8sdp"
+            android:text="Name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14ssp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_name"
+            android:layout_alignParentLeft="true"
+            android:paddingLeft="@dimen/_8sdp"
+            android:text="Amount"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14ssp" />
+
+        <TextView
+            android:id="@+id/tv_reg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:gravity="right"
+            android:paddingRight="@dimen/_8sdp"
+            android:text="210727"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14ssp" />
+
+        <TextView
+            android:id="@+id/amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_reg"
+            android:layout_alignParentRight="true"
+            android:gravity="right"
+            android:paddingRight="@dimen/_8sdp"
+            android:text="210727"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14ssp" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

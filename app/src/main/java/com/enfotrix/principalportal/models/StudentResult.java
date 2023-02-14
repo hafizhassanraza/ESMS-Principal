@@ -1,7 +1,12 @@
 package com.enfotrix.principalportal.models;
 
-public class StudentResult {
-    private String studentID, sectionID, physics, pakStudy, urdu, islamiyat, math, biology, scienceG, computer, english, chemistry, status;
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
+public class StudentResult implements Parcelable {
+    private String studentID, sectionID, physics, pakStudy, urdu, islamiyat, math, biology, scienceG, computer, english, chemistry, status, studentName, fatherName, totalMarks, obtainedMarks;
 
     public StudentResult() {
         this.studentID = null;
@@ -18,6 +23,34 @@ public class StudentResult {
         this.chemistry = null;
         this.status = null;
     }
+
+    protected StudentResult(Parcel in) {
+        studentID = in.readString();
+        sectionID = in.readString();
+        physics = in.readString();
+        pakStudy = in.readString();
+        urdu = in.readString();
+        islamiyat = in.readString();
+        math = in.readString();
+        biology = in.readString();
+        scienceG = in.readString();
+        computer = in.readString();
+        english = in.readString();
+        chemistry = in.readString();
+        status = in.readString();
+    }
+
+    public static final Creator<StudentResult> CREATOR = new Creator<StudentResult>() {
+        @Override
+        public StudentResult createFromParcel(Parcel in) {
+            return new StudentResult(in);
+        }
+
+        @Override
+        public StudentResult[] newArray(int size) {
+            return new StudentResult[size];
+        }
+    };
 
     public String getStudentID() {
         return studentID;
@@ -121,5 +154,62 @@ public class StudentResult {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel parcel, int i) {
+
+        parcel.writeString(studentID);
+        parcel.writeString(sectionID);
+        parcel.writeString(physics);
+        parcel.writeString(pakStudy);
+        parcel.writeString(urdu);
+        parcel.writeString(islamiyat);
+        parcel.writeString(math);
+        parcel.writeString(biology);
+        parcel.writeString(scienceG);
+        parcel.writeString(computer);
+        parcel.writeString(english);
+        parcel.writeString(chemistry);
+        parcel.writeString(status);
+
+
+    }
+
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
+
+    public String getFatherName() {
+        return fatherName;
+    }
+
+    public void setFatherName(String fatherName) {
+        this.fatherName = fatherName;
+    }
+
+    public String getTotalMarks() {
+        return totalMarks;
+    }
+
+    public void setTotalMarks(String totalMarks) {
+        this.totalMarks = totalMarks;
+    }
+
+    public String getObtainedMarks() {
+        return obtainedMarks;
+    }
+
+    public void setObtainedMarks(String obtainedMarks) {
+        this.obtainedMarks = obtainedMarks;
     }
 }

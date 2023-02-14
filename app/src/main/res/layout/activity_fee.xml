@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_gradient_splash"
+    tools:context=".activities.FeeActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:elevation="@dimen/_16sdp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginHorizontal="@dimen/_12sdp"
+            android:text="Fee"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_22ssp" />
+
+    </RelativeLayout>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:cardCornerRadius="@dimen/_8sdp"
+        app:cardElevation="@dimen/_18sdp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginVertical="20dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <TextView
+                    android:id="@+id/tittle_recived"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="Received Amounts"
+                    android:textSize="@dimen/_15sdp"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:id="@+id/line1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/tittle_recived"
+                    android:layout_marginHorizontal="@dimen/_60sdp"/>
+
+
+                <TextView
+                    android:id="@+id/heading1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/line1"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="Full Fee Received :"/>
+
+                <TextView
+                    android:id="@+id/txt_detail_feeRecevied"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/line1"
+
+                    android:layout_marginLeft="@dimen/_5sdp"
+
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_toRightOf="@+id/heading1"
+                    android:text="@string/details"
+                    android:textSize="@dimen/_10sdp"/>
+
+
+                <TextView
+                    android:id="@+id/heading2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/heading1"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:text="Partially Fee Received :"/>
+
+
+                <TextView
+
+                    android:id="@+id/txt_detail_partialy_feeRecevied"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/heading1"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:layout_toRightOf="@+id/heading2"
+
+                    android:text="@string/details"
+                    android:textSize="@dimen/_10sdp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/line2"
+                    android:layout_marginTop="3dp"
+                    android:text="Grand Total (Received) "
+                    android:textStyle="bold"/>
+
+
+                <TextView
+                    android:id="@+id/txt_totol_full_Recived"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/line1"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="0 Pkr"/>
+
+
+                <TextView
+                    android:id="@+id/txt_totol_partially_Recived"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txt_totol_full_Recived"
+                    android:layout_alignParentRight="true"
+
+                    android:text="0/-Pkr"/>
+
+                <View
+                    android:id="@+id/line2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/heading2"
+                    android:layout_marginTop="3dp"
+                    android:background="@color/black"/>
+
+                <TextView
+                    android:id="@+id/txt_grandTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/line2"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="3dp"
+                    android:text="0 Pkr"
+                    android:textStyle="bold"/>
+
+                <Button
+                    android:id="@+id/btn_transactionDetails"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txt_grandTotal"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="Collection (Day-wise)">
+
+                </Button>
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <TextView
+                    android:id="@+id/tittle_pending"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:text="Pending Amounts"
+                    android:textSize="@dimen/_15sdp"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:id="@+id/line11"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/tittle_pending"
+                    android:layout_marginHorizontal="@dimen/_60sdp"/>
+
+
+                <TextView
+                    android:id="@+id/heading11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/line11"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="Full Fee Pending :"/>
+
+                <TextView
+                    android:id="@+id/txt_detail_ful_feepending"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/line11"
+                    android:layout_marginLeft="@dimen/_5sdp"
+
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_toRightOf="@+id/heading11"
+                    android:text="@string/details"
+                    android:textSize="@dimen/_10sdp"/>
+
+
+                <TextView
+                    android:id="@+id/heading22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/heading11"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:text="Partially Fee Pending :"/>
+
+
+                <TextView
+                    android:id="@+id/txt_detail_partialy_feepending"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/heading11"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:layout_toRightOf="@+id/heading22"
+
+                    android:text="@string/details"
+                    android:textSize="@dimen/_10sdp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/line22"
+                    android:layout_marginTop="3dp"
+                    android:text="Grand Total (Pending) "
+                    android:textStyle="bold"/>
+
+
+                <TextView
+                    android:id="@+id/txt_totol_full_Pending"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/line11"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="0 Pkr"/>
+
+
+                <TextView
+                    android:id="@+id/txt_totol_partially_pending"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txt_totol_full_Pending"
+                    android:layout_alignParentRight="true"
+                    android:text="0 Pkr" />
+
+                <View
+                    android:id="@+id/line22"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/heading22"
+                    android:layout_marginTop="3dp"
+                    android:background="@color/black" />
+
+                <TextView
+                    android:id="@+id/txt_grandTotalpending"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/line22"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="3dp"
+                    android:text="0 Pkr"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>
+

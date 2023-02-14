@@ -1,15 +1,11 @@
 package com.enfotrix.principalportal.adapters;
 
-import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.enfotrix.principalportal.R;
 import com.enfotrix.principalportal.databinding.OverallResultListItemBinding;
 import com.enfotrix.principalportal.models.OverAllResult;
 import com.enfotrix.principalportal.utilities.RecyclerViewClickInterface;
@@ -20,9 +16,11 @@ public class OverAllResultsAdapter extends RecyclerView.Adapter<OverAllResultsAd
     private ArrayList<OverAllResult> overAllResults;
     private RecyclerViewClickInterface recyclerViewClickInterface;
 
+
     public OverAllResultsAdapter(ArrayList<OverAllResult> overAllResults, RecyclerViewClickInterface recyclerViewClickInterface) {
         this.overAllResults = overAllResults;
         this.recyclerViewClickInterface = recyclerViewClickInterface;
+
     }
 
     @NonNull
@@ -43,13 +41,14 @@ public class OverAllResultsAdapter extends RecyclerView.Adapter<OverAllResultsAd
         holder.binding.tvTotal.setText(overAllResults.get(position).getTotalStudents());
         holder.binding.tvPass.setText(overAllResults.get(position).getPassStudents());
         holder.binding.tvFail.setText(overAllResults.get(position).getFailStudents());
-        String percentage;
-        if (Integer.parseInt(overAllResults.get(position).getTotalStudents()) == 0)
-            percentage = "0";
-        else
-            percentage = String.valueOf(Integer.parseInt(overAllResults.get(position).getPassStudents()) * 100 / Integer.parseInt(overAllResults.get(position).getTotalStudents()));
-        holder.binding.tvPercent.setText(percentage);
+        String percentage1;
+        holder.binding.tvPercent.setText(overAllResults.get(position).getPercentage());
 
+      /*  if (Integer.parseInt(overAllResults.get(position).getTotalStudents()) == 0)
+            percentage1 = "0";
+        else
+            percentage1 = String.valueOf(Integer.parseInt(overAllResults.get(position).getPassStudents()) * 100 / Integer.parseInt(overAllResults.get(position).getTotalStudents()));
+        holder.binding.tvPercent.setText(percentage1);*/
     }
 
     @Override
@@ -65,9 +64,9 @@ public class OverAllResultsAdapter extends RecyclerView.Adapter<OverAllResultsAd
 
             this.binding = binding;
 
-//            binding.getRoot().setOnClickListener(view -> {
-//                recyclerViewClickInterface.onItemClick(getAdapterPosition());
-//            });
+            binding.getRoot().setOnClickListener(view -> {
+                recyclerViewClickInterface.onItemClick(getAdapterPosition());
+            });
 
         }
     }

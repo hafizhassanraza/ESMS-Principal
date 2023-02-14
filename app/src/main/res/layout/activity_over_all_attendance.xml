@@ -42,15 +42,12 @@
         android:indeterminate="true"
         android:layout_below="@id/layoutActionBar"/>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="5dp"
-        android:layout_below="@id/layoutActionBar">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layoutActionBar"
+            >
 
             <LinearLayout
                 android:id="@+id/layoutDate"
@@ -192,20 +189,31 @@
                 android:layout_below="@id/layoutDetails"
                 android:background="@color/black" />
 
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rvAttendanceview"
+                android:layout_below="@id/viewDetails"
+                android:layout_marginTop="5dp"
+                >
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvAttendance"
-                android:layout_below="@id/viewDetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="2dp"
                 android:overScrollMode="never"
                 tools:listitem="@layout/overall_attendance_list_item" />
 
+
+            </ScrollView>
+
             <LinearLayout
                 android:id="@+id/layoutTotalStudentsDetail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/rvAttendance"
+                android:layout_below="@id/rvAttendanceview"
                 android:paddingVertical="2.5dp">
 
                 <TextView
@@ -290,8 +298,6 @@
 
 
         </RelativeLayout>
-
-    </ScrollView>
 
 
 

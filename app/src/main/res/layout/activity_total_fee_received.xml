@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg_gradient_splash"
+    android:orientation="vertical"
+    tools:context=".activities.AnnoucementsActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/purple_500"
+        android:elevation="@dimen/_16sdp">
+
+        <TextView
+            android:id="@+id/header_title123"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginHorizontal="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="Received Fee (List of Students)"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_18ssp" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rec_days"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_below="@+id/header_title123"
+            android:layout_marginVertical="@dimen/_8sdp"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/list_feestudent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+
+</LinearLayout>

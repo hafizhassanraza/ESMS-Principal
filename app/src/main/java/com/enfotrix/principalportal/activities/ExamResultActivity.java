@@ -4,14 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.enfotrix.principalportal.adapters.OverAllAttendanceAdapter;
 import com.enfotrix.principalportal.adapters.OverAllResultsAdapter;
 import com.enfotrix.principalportal.databinding.ActivityExamResultBinding;
 import com.enfotrix.principalportal.models.OverAllResult;
+import com.enfotrix.principalportal.models.Student;
 import com.enfotrix.principalportal.models.StudentResult;
 import com.enfotrix.principalportal.utilities.Constants;
 import com.enfotrix.principalportal.utilities.RecyclerViewClickInterface;
@@ -19,6 +24,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ExamResultActivity extends AppCompatActivity implements RecyclerViewClickInterface {
 
@@ -26,8 +32,13 @@ public class ExamResultActivity extends AppCompatActivity implements RecyclerVie
     private FirebaseFirestore firebaseFirestore;
     private ArrayList<OverAllResult> overAllResults;
     private ArrayList<StudentResult> studentResultsList;
+    private ArrayList<Student> studentArrayList;
     private String examID;
     private OverAllResultsAdapter overAllResultsAdapter;
+
+    private int totalMarksForPercentage;
+    private int obtainedMarksForPercentage;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,11 +62,15 @@ public class ExamResultActivity extends AppCompatActivity implements RecyclerVie
         loading(false);
     }
 
+    @SuppressLint("SuspiciousIndentation")
     private void getOverAllStudentsResults() {
         for (int i = 0; i < overAllResults.size(); i++) {
-            int totalStudents = 0, passStudents = 0, failStudents = 0;
+            Log.d("overallresultsize", String.valueOf(overAllResults.size()));
+            int totalStudents = 0, passStudents = 0, failStudents = 0, totalObtainedMarks = 0, totalTotalMarks = 0;
             for (int j = 0; j < studentResultsList.size(); j++) {
                 if (overAllResults.get(i).getSectionID().equals(studentResultsList.get(j).getSectionID())) {
+                    totalObtainedMarks += Integer.parseInt(studentResultsList.get(j).getObtainedMarks());
+                    totalTotalMarks += Integer.parseInt(studentResultsList.get(j).getTotalMarks());
                     totalStudents++;
                     if (studentResultsList.get(j).getStatus().equals("Pass")) {
                         passStudents++;
@@ -64,12 +79,16 @@ public class ExamResultActivity extends AppCompatActivity implements RecyclerVie
                     }
                 }
             }
-//            float percetage = passStudents * 100 / totalStudents;
+            //    Log.d("TotalMarksObtained", String.valueOf(totalTotalMarks));
+            float percentage = passStudents * 100 / totalStudents;
+
+//            Float percentage = (float) (totalObtainedMarks * 100 / totalTotalMarks);
             overAllResults.get(i).setTotalStudents(String.valueOf(totalStudents));
             overAllResults.get(i).setPassStudents(String.valueOf(passStudents));
             overAllResults.get(i).setFailStudents(String.valueOf(failStudents));
-            overAllResults.get(i).setPercentage(String.valueOf(0));
+            overAllResults.get(i).setPercentage(String.valueOf(percentage));
         }
+
         recyclerViewInIt();
     }
 
@@ -77,6 +96,7 @@ public class ExamResultActivity extends AppCompatActivity implements RecyclerVie
         loading(true);
         firebaseFirestore = FirebaseFirestore.getInstance();
         overAllResults = new ArrayList<>();
+        studentResultsList = new ArrayList<>();
         studentResultsList = new ArrayList<>();
 
         firebaseFirestore.collection("Exams")
@@ -111,6 +131,8 @@ public class ExamResultActivity extends AppCompatActivity implements RecyclerVie
                 .addOnCompleteListener(task1 -> {
 
                     if (task1.getResult().getDocuments().size() != 0) {
+                        studentArrayList = (ArrayList<Student>) task1.getResult().toObjects(Student.class);
+
 //                        Log.d("TAG", "getStudentResult: " + task1.getResult().getDocuments().size());
                         overAllResults.add(
                                 new OverAllResult(
@@ -157,8 +179,11 @@ public class ExamResultActivity extends AppCompatActivity implements RecyclerVie
                         studentResult.setStudentID(snapshot.getString("StudentId"));
                         studentResult.setSectionID(snapshot.getString("SectionID"));
                         int totalObtainedMarks = 0;
+                        int totalTotalMarks = 0;
                         for (DocumentSnapshot documentSnapshot2 : task2.getResult()) {
+
                             String obtainMarks = documentSnapshot2.getString("ObtainMarks");
+                            String totalMarks = documentSnapshot2.getString("TotalMarks");
                             switch (documentSnapshot2.getString("SubjectName")) {
                                 case "Physics":
                                     studentResult.setPhysics(obtainMarks);
@@ -175,6 +200,7 @@ public class ExamResultActivity extends AppCompatActivity implements RecyclerVie
                                 case "Islamiyat":
                                     studentResult.setIslamiyat(obtainMarks);
                                     totalObtainedMarks += Integer.parseInt(obtainMarks);
+                                    totalObtainedMarks += Integer.parseInt(totalMarks);
                                     break;
                                 case "Math":
                                     studentResult.setMath(obtainMarks);
@@ -201,13 +227,19 @@ public class ExamResultActivity extends AppCompatActivity implements RecyclerVie
                                     totalObtainedMarks += Integer.parseInt(obtainMarks);
                                     break;
                             }
+
+
                         }
-                        float percentage = (totalObtainedMarks * 100) / (100 * task2.getResult().getDocuments().size());
+                        studentResult.setObtainedMarks(String.valueOf(totalObtainedMarks));
+                        studentResult.setTotalMarks(String.valueOf(totalTotalMarks));
+                        int percentage1 = (totalObtainedMarks * 100) / (100 * task2.getResult().getDocuments().size());
                         studentResult.setStatus(
-                                ((percentage >= 40) ? "Pass" : "Fail")
+                                ((percentage1 >= 40) ? "Pass" : "Fail")
                         );
                         studentResultsList.add(studentResult);
-                        //Log.d("TAG", "getStudentResult: "+ totalObtainedMarks +"   " + i++);
+
+
+                        //    Log.d("BiologyMarks", studentResultsList.get(0).getBiology());
                     } else {
                         //Toast.makeText(this, "Hello", Toast.LENGTH_SHORT).show();
                         /*Log.d("TAG", "getStudentResult: " + documentSnapshot1.getString("CurrentClass") + " "
@@ -222,6 +254,16 @@ public class ExamResultActivity extends AppCompatActivity implements RecyclerVie
     @Override
     public void onItemClick(int position) {
 
+
+     /*   if (studentResultsList.size() > 0) {
+
+
+            Intent intent = new Intent(ExamResultActivity.this, ResultDetailsActivity.class);
+            intent.putParcelableArrayListExtra("studentResultList", studentResultsList);
+            intent.putParcelableArrayListExtra("studentList", studentArrayList);
+            startActivity(intent);
+        }
+*/
     }
 
     private void loading(boolean flag) {
